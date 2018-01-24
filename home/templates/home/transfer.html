@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% include "home/include/header.html" %}
+</head>
+<body>
+    {% if issue = False and user.user_type = 'doctor' %}
+        Do you wish to transfer {{patient.first_name}} {{patient.last_name}} (username: {{patient.username}})
+        from {{patient.hospital}} in {{patient.hospital.city}} {{patient.hospital.state}}
+        <br/>
+        to {{Cuser.hospital}}<br/>
+        <form method="post">
+          {% csrf_token %}
+          <button type="submit">Yes</button>
+        </form>
+    {% elif user.is_superuser and form != None %}
+            Do you wish to transfer {{patient.first_name}} {{patient.last_name}} (username: {{patient.username}})
+            from {{patient.hospital}} in {{patient.hospital.city}} {{patient.hospital.state}}
+             to
+        <form method="post">
+          {% csrf_token %}
+            {{form.as_p}}
+          <button type="submit">Yes</button>
+      </form>
+    {% else %}
+            Your user isn't authorizes to transfer this patient<br/>
+    {%endif%}
+    <button onclick="window.location.href='{% url 'home:pDetail' patient.username%}'">
+        Cancel
+    </button>
+</body>
+</html>

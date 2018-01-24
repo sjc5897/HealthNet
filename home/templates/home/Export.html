@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Export</title>
+</head>
+<body>
+{% include "home/include/header.html" %}
+Do you wish to download this test. This information can be of a sensitive nature and you may not want this information going public<br>
+By clicking download you are responsible your information's security. We at HealthNet urge you to continue with caution
+<form method="post">
+        {% csrf_token %}
+<button type="submit">Download</button>
+</form>
+</body>
+<button onclick="window.location.href = '{%url 'home:test' medtest.patient_ID%}'">Return</button>
+</html>

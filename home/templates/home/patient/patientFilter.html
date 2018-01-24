@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Filter Results</title>
+    {% include "home/include/header.html" %}
+</head>
+<body>
+        <H2>Search Patient</H2>
+        <form method="post">
+        {% csrf_token %}
+        {{patient_form.as_p}}
+        <button type="submit">Search</button>
+    </form>
+
+</body>
+</html>

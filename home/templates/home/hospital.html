@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{owner.hospital}}</title>
+    {% include "home/include/header.html" %}
+</head>
+<body>
+
+<h2> {{owner.hospital}} Information:</h2>
+{{owner.hospital.address}} {{owner.hospital.city}}, {{owner.hospital.state}} ({{owner.hospital.zip}})<br>
+<a href="{% url 'home:admitted'%}"> View List of Admitted Patients</a><br>
+<a href="{% url 'home:admit' %}">Admit a Patient</a><br>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Medical</title>
+    {% include "home/include/header.html" %}
+</head>
+<body>
+    <form method="POST">
+        {% csrf_token %}
+        {{ medical_form.as_p }}
+        <button type="submit">Save changes</button>
+    </form>
+</body>
+</html>

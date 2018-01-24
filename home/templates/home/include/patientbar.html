@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+h1{
+color: gold;
+}
+a:hover{background-color:#66ccff;}
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style = "background: linear-gradient(to right, dodgerblue, lightblue);color:black;padding:10px;position:relative;bottom:20px; line-height: 200%;">
+    <a href="/home/patient" style="text-decoration: none; color: black; padding: 10px;">
+	View Patient Profiles
+    </a>
+    <a href="/home/doctor" style="text-decoration:none; color:black; margin:auto; padding: 10px">
+        View Doctor Profiles
+    </a>
+    <a href="/home/nurse"style="text-decoration: none; color:black; margin:auto; padding: 10px">
+        View Nurse Profiles
+    </a>
+    <a href="/home/administrator"style="text-decoration: none; color:black; margin:auto; padding: 10px">
+        View Administrators
+    </a>
+    <a href="{% url 'home:appointmentCal' user.username%}"  style="text-decoration: none; color:black; margin:auto; padding: 10px">
+        View Your Calendar
+    </a>
+    <a href="/home/messages" style="text-decoration: none; color:black; margin:auto; padding: 10px">
+        View Messages
+    </a>
+</div>
+</body>
+</html>

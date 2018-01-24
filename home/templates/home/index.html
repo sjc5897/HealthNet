@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "home/include/header.html" %}
+<style>
+h1{
+color: gold;
+}
+
+</style>
+</head>
+<body>
+    <a href="/home/patient">
+	Patients List
+    </a>
+    <a href="/home/doctor" style="text-decoration: none;">
+        <button style = "width:130px;height:30px;background-color: lightseagreen">Doctors List</button>
+    </a>
+    <a href="/home/nurse"style="text-decoration: none;">
+        <button style = "width:130px;height:30px;background-color: lightseagreen">Nurses List</button>
+    </a>
+    <a href="/home/administrator"style="text-decoration: none;">
+        <button style = "width:130px;height:30px;background-color: lightseagreen">Administrators List</button>
+    </a>
+    </a>
+    <a href="/home/list"style="text-decoration: none;">
+        <button style = "width:130px;height:30px;background-color: lightseagreen">Files List</button>
+    </a>
+{% if user.username in admin_list %}
+    <a href="/home/activities" style="text-decoration: none;">
+        <button style = "width:130px;height:30px;background-color: lightseagreen">View Activity Log</button>
+    </a>
+{%endif%}
+<i>
+<img src = "http://i.imgur.com/SyqrCPh.png" alt = "i.imgur.com/SyqrCPh.png" style = "height:300px;width:450;
+position:relative;top:20px;left:400px;">
+</i>
+</body>
+</html>

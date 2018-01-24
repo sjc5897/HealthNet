@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tests</title>
+    {% include "home/include/header.html" %}
+</head>
+<body>
+    <h2>Uploaded Tests:</h2>
+    {% if tests %}
+        {% for test in tests %}
+            {% if user.user_type == "doctor" or test.released %}<li>
+                <a href="{{ test.attachedFiles.url }}">{{ test.filename }}</a><br/>
+                Comments:
+                {{test.comments}}  <br />
+                {% if user.username == id.username %}
+                        <button onclick="window.location.href='{% url 'home:export' test.id %}'">Download Test Results</button>
+                {% endif %}
+                {% if test.released = False and user.user_type == 'doctor' and Cuser.hospital == id.hospital %}
+                    <button onclick="window.location.href='{% url 'home:release' test.id id.username %}'">Release Test</button>
+
+                {% endif %}    
+            {% else %}        
+                No test results found<br>           
+            {% endif %}</li>
+        {%endfor%}
+    {%else%}
+        No test results found<br>
+    {%endif%}
+    {% if user.user_type == "doctor" and Cuser.hospital = id.hospital%}
+        <a href="{% url 'home:list' id.username %}" style="text-decoration: none;">
+                <button type="button">Upload Files</button> </a>
+    {%endif%}
+</body>
+</html>

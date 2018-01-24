@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{username}}</title>
+    {% include "home/include/header.html" %}
+</head>
+<body>
+<h2> Patient Name: {{ first_name }} {{last_name}} ({{patient.user.username}})<br/></h2>
+Hospital: {{patient.hospital}} <br/>
+Email: {{email}}<br/>
+Sex: {{patient.medical.sex}}<br/>
+DOB: {{DOB}}<br/>
+Address: {{address}}, {{city}}, {{state}} {{zip}}<br/>
+Phone: {{phone}}<br/>
+    {% if user.username == patient.username or user.user_type == "nurse" or user.user_type == "doctor" or user.is_superuser %}
+        Height: {{height1}} {{height2}}<br/>
+        Weight: {{weight}}<br/>
+        Blood type: {{patient.medical.blood_Type}}<br/>
+    {% if user.user_type == 'doctor' or user.is_superuser %}
+        <a href="{% url 'home:Transfer' patient.user.username%}"> Transfer Patient</a><br/>
+    {% endif %}
+    {% if user.username == patient.username %}
+        <a href="{% url 'home:contact' patient.id %}"style="text-decoration: none;"> Edit Contact Information</a><br/>
+{% endif %}
+    {% if user.username == patient.username or user.user_type == "nurse" %}
+    <a href="{% url 'home:test' patient.username %}" style="text-decoration: none;">View Test Results</a><br>
+    {% endif %}
+        <a href="{% url 'home:appointmentCal' patient.user.username %}"style="text-decoration: none;">View Calendar</a><br/>
+        {% if user.user_type == "doctor" or user.user_type == "nurse" %}
+            <a href="{% url 'home:medical' patient.id %}"style="text-decoration: none;"> Edit Medical Information</a><br/>
+
+        {% endif %}
+    {% if user.user_type == "doctor" %}
+        <a href="{% url 'home:test' patient.username %}" style="text-decoration: none;">View Test Results</a><br>
+    {% endif %}
+    {% if user.user_type == "doctor" or user.user_type == "nurse" or user.username == patient.username%}
+    <a href="{% url 'home:prescriptions' patient.user.username %}">
+            Prescriptions
+        </a>
+    {% endif %}
+{%endif%}
+</body>
+</html>

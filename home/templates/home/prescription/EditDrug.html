@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Drug</title>
+     {% include "home/include/header.html" %}
+</head>
+<body>
+<h2> Edit {{d.name}}: </h2>
+ <form method="post">
+     <table>
+        {% csrf_token %}
+        {{form.as_table}}
+
+    </table><button type="submit">Submit Changes</button>
+    </form>
+    <button onclick="window.location.href = '{%url 'home:drugDelete' d.id %}'">Delete Drug</button>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Message</title>
+    {% include "home/include/header.html" %}
+</head>
+<body>
+<form method = "post"> 
+    {% csrf_token %}
+    {{message_form.as_p}}
+    <button type = "submit">Send</button>
+</form>
+</body>
+</html>

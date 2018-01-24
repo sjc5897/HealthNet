@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HealthNet</title>
+    {% include "home/include/header.html" %}
+
+</head>
+<body>
+    <h2>Nurse: {{nurse.first_name}} {{nurse.last_name}}</h2>
+    Hospital: {{nurse.hospital}} <br/>
+    Email: {{nurse.email}}<br/>
+    Office Phone: {{phone}}<br/>
+    {% if user.username == nurse.user.username %}
+    <a href="{% url 'home:appointmentCal' nurse.user.username %}" style="text-decoration:none;">View Calendar</a><br/>
+    {% endif %}
+{% if user.is_superuser %}
+    <a href="{% url 'home:editNurse' nurse.user.username %}"style="text-decoration: none;">Edit Profile</a><br/>
+{% endif %}
+</body>
+</html>

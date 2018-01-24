@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    {% include "home/include/header.html" %}
+</head>
+<body>
+<form method="post">
+    <table>
+    {% csrf_token %}
+    {{user_form.as_table}}
+    {{patient_form.as_table}}
+    {{contact_form.as_table}}
+    {{medical_form.as_table}}
+    </table>
+    <button type="submit">Register </button>
+
+</form>
+    <button onclick="window.location.href='/home'">
+    Cancel
+</button>
+
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Healthnet</title>
+<style>
+
+h1{
+	background: linear-gradient(to left,#000080,blue);
+	color: gold;
+	box-shadow: 2px 2px black;
+}
+body {
+	background: powderblue;
+	background: linear-gradient(powderblue, white) fixed;
+}
+a{text-decoration: none}
+</style>
+    <link rel="shortcut icon" type="image/png" href="/favicon.ico">
+</head>
+<h1>
+    {% load tz %}
+
+{{ value|localtime }}
+
+	<a href = "/home/">
+	<img src = "http://i.imgur.com/hKT8ovq.png" alt = "i.imgur.com/hKT8ovq.png" style = "height:45px;width:45;position: relative;
+	top: 6px; left: 4px;">
+	</a>
+	<a href = "/home/" style="text-decoration: none; font-size:42px; color: gold; text-shadow: 2px 2px black;">
+	HealthNet
+	</a>
+	    {% if not user.is_authenticated %}
+        <style>
+        .dropbtn {
+            background-color:#000080 ;
+            color: gold;
+            font-family: "Georgia";
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dropbtn:hover, .dropbtn:focus {
+            background-color: #1D53C2;
+        }
+
+        .dropdown {
+            float: right;
+            position: relative;
+            display: inline-block;
+
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 160px;
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            right: 0;
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            font-size: 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown a:hover {background-color: #f1f1f1}
+
+        .show {display:block;}
+    </style>
+
+    <div class="dropdown">
+    <button onclick="headDropDown()" class="dropbtn">
+                Sign In
+      <div id="outDropdown" class="dropdown-content">
+          <a href="{% url 'home:login' %} ">Login</a>
+          <a href="{% url 'home:register' %}">Register New Patient</a>
+
+      </div>
+
+    <script>
+        function headDropDown() {
+            document.getElementById("outDropdown").classList.toggle("show");
+        }
+        window.onclick = function(event) {
+          if (!event.target.matches('.dropbtn')) {
+
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+              var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+              }
+            }
+          }
+        }
+    </script>
+    {% endif %}
+
+    {% if user.is_authenticated %}
+    <style>
+        .dropbtn {
+            background-color:#000080 ;
+            color: gold;
+            font-family: "Gerogia";
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dropbtn:hover, .dropbtn:focus {
+            background-color: #1D53B2;
+        }
+
+        .dropdown {
+            float: right;
+            position: relative;
+            display: inline-block;
+
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 160px;
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            right: 0;
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            font-size: 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown a:hover {background-color: #f1f1f1}
+
+        .show {display:block;}
+    </style>
+
+    <div class="dropdown">
+    <button onclick="headDropDown()" class="dropbtn">
+                {% if user.first_name %}
+                    Hello, {{user.first_name}} {{user.last_name}}
+                {% else %}
+                    Hello, {{user.username}}
+                {% endif %}</button>
+      <div id="myDropdown" class="dropdown-content">
+          <a href="/home">Home</a>
+          {%if user.user_type == "doctor" or user.user_type == "nurse"%}
+            <a href="{% url 'home:register' %}">Register New Patient</a>
+          {%endif%}
+            <a href="{% url 'home:logout' %}">Logout</a>
+      </div>
+</div>
+
+    <script>
+        function headDropDown() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+        window.onclick = function(event) {
+          if (!event.target.matches('.dropbtn')) {
+
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+              var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+              }
+            }
+          }
+        }
+    </script>
+{%endif%}
+    </button>
+    </div>
+</h1>
+    {%if user.user_type == 'doctor' or user.user_type == 'nurse'%}
+        {% include "home/include/staffbar.html" %}
+    {%elif user.user_type == 'patient' %}
+        {% include "home/include/patientbar.html" %}
+    {%elif user.is_superuser %}
+        {% include "home/include/adminBar.html" %}
+    {%endif%}
+<div id = 'page' style = "padding:7px; border:3px; background: white; border-style:double; border-color:black; width: 600px; margin: auto; ">
+<style>
+
+div {
+background-color:white; color:black;
+}
+ul{
+list-style-type: none;
+padding: 5px;
+position:relative;
+right:6px
+}
+li{
+padding: 5px;
+background-color:#e6e6e6
+}
+li:nth-child(odd){
+background: lightgray;
+}</style>
+
+</html>

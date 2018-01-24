@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Statistics</title>
+    {% include "home/include/header.html" %}
+</head>
+<H2> System Statistics: 
+<button style = "padding:7px; width:80px; position:relative; left:300px;" onclick="window.location.href='{% url 'home:filterStatistics' %}'">
+    Filter
+</button>
+</H2> 
+<body>
+<hr/>
+Number of Logins: {{Login}}<br/>
+Patients Registered: {{PReg}}<br/>
+Nurses Registered: {{NReg}}<br/>
+Doctors Registered: {{DReg}}<br/>
+Admins Registered: {{AReg}}<br/>
+Patients Admitted: {{Admit}}<br/>
+Average Time of Admission: {{AvgTm}} <br/>
+Most Common Reasons of Admission:
+{% for r in Reason %}
+    {{r}},
+{%endfor%}
+<br/>
+Patients Transferred: {{Trans}}<br/>
+Prescriptions Created: {{PresC}}<br/>
+Prescriptions Refilled: {{PresR}}<br/>
+Prescriptions Deleted: {{PresD}}<br/>
+Drugs Created: {{DrugC}}<br/>
+Appointments Created: {{AppCr}}<br/>
+Messages Sent: {{Msg}}<br/>
+</body>
+</html>

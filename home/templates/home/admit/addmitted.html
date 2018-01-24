@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HealthNets</title>
+    {% include "home/include/header.html" %}
+<style>
+</style>
+<body>
+{% if patients %}
+    <h2>Admitted Patients:</h2>
+    <ul>
+        {% for patient in patients %}
+        <li><a href="{% url 'home:pDetail' patient.user.username %}"style="text-decoration: none;">
+            {{patient.last_name}}, {{patient.first_name}} ({{patient.user.username}})</a>
+            <a href="{% url 'home:Discharge' patient.user.username %}"style="text-decoration: none; float:right;">
+                Discharge Patient
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+{%else%}
+    <p> No Patients Admitted</p>
+{% endif %}
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Message</title>
+    {% include "home/include/header.html" %}
+</head>
+<body>
+<font size = "5">
+{{message.Subject}}</font>
+<hr>
+{{message.Sender_ID}} to {{message.Receiver_ID}} 
+<p> Sent at {{message.timestamp|date:"P m/d/Y"}} </p>
+<div id = "2" style = "width: 530px; height: 298px;
+    padding: 10px;
+    border: 2px solid gray;
+    font-size:14px; overflow-y: scroll;
+    position:relative; bottom: 10px; left: 5px;">
+{{message.Message|linebreaks}}
+</div>
+</body>
+<button onclick = "window.location.href = '{% url 'home:delete' message.id %}'">Delete </button>
+</html>

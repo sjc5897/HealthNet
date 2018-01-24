@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <title>Edit Doctor </title>
+    {% include "home/include/header.html" %}
+</head>
+<body>
+<h2>Edit {{d.username}}:</h2>
+<form method="post">
+    <table>
+    {% csrf_token %}
+    {{user_form.as_table}}
+    {{doctor_form.as_table}}
+    </table>
+    <button type="submit">Save Changes </button>
+
+</form>
+</body>
+</html>

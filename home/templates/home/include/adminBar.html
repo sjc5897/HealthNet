@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+h1{
+color: gold;
+}
+a:hover{
+background-color:#66ccff;
+}
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+
+<div style = "background: linear-gradient(to right, dodgerblue, lightblue); color:black; padding:10px; position:relative; bottom:20px; line-height:200%;">
+
+    <a href="/home/patient" style="text-decoration: none; color: black; padding: 10px">
+        View Patient Profiles
+    </a>
+    <a href="/home/doctor" style="text-decoration: none; color:black; margin:auto; padding: 10px">
+        View Doctor Profiles
+    </a>
+    <a href="/home/nurse" style="text-decoration: none; color:black; margin:auto; padding: 10px">
+        View Nurse Profiles
+    </a>
+    <a href="/home/administrator" style="text-decoration: none; color:black; margin:auto; padding: 10px">
+        View Administrators
+    </a>
+    <a href="{%url 'home:hospitalList' %}" style="text-decoration: none; color:black; margin:auto; padding: 10px">
+        View Hospitals
+    </a>
+    <a href="{%url 'home:drugList' %}" style="text-decoration: none; color:black; margin:auto; padding: 10px">
+        View Drug Database
+    </a>
+    <a href="/home/activities" style="text-decoration: none; color:black; margin:auto; padding: 10px">
+        View Activity Log
+    </a>
+    <a href = "{% url 'home:statistics' %}" style="text-decoration: none; color:black; margin:auto; padding: 10px">
+        View System Statistics
+    </a>
+    <a href = "{%url 'home:AdminReg' %}" style="text-decoration: none; color:black; margin:auto; padding: 10px">
+        Create New Admin</a>
+    <a href="{%url 'home:DoctorReg' %}" style="text-decoration: none; color:black; margin:auto; padding: 10px">
+        Create New Doctor
+    </a>
+    <a href="{%url 'home:NurseReg' %}" style="text-decoration: none; color:black; margin:auto; padding: 10px">
+        Create New Nurse
+    </a>
+    <a href="{%url 'home:HospitalReg' %}" style="text-decoration: none; color:black; margin:auto; padding: 10px">
+        Create New Hospital
+    </a>
+    <a href="{% url 'home:NewDrug' %}" style="text-decoration: none; color:black; margin:auto; padding: 10px">
+        Create New Drug
+    </a>
+    <a href="/home/messages" style="text-decoration: none; color:black; margin:auto; padding:10px;">
+        View Messages
+    </a></div>
+</div>
+</body>
+</html>

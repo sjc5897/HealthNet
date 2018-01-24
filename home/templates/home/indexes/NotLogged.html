@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "home/include/header.html" %}
+</head>
+
+<center><h2>Welcome to HealthNet.com!</h2>
+    Healthnet is a one stop shop to all things HealthCare.<br/>
+    Healthnet makes interaction between patients and doctors easy.<br/>
+    It allows for easy appointment making, simple prescription creations, and quick access to medical information<br/>
+    <br>
+    To access the full extent of HealthNet.com:<br/>
+    <button style = "width:77px; height:25px;" onclick="window.location.href = '{% url 'home:login' %}' ">Login
+    </button>
+    or
+    <button style = "width:77px; height:25px;" onclick="window.location.href='{% url 'home:register' %}'">
+        Sign Up
+    </button><br/>
+</center>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prescriptions</title>
+    {% include "home/include/header.html" %}
+</head>
+<body>
+<h2>Prescriptions:</h2>
+{% if prescription_list %}
+    <ul>
+        {% for prescription in prescription_list %}
+            <li><a href="{% url 'home:prescriptionDetail' prescription.id %}" style = "text-decoration: none;">
+                {{prescription}}</a>
+            </li>
+        {%endfor%}
+    </ul>
+{% else %}
+    This patient has no prescriptions<br/><br/>
+{%endif%}
+{% if user.user_type == 'doctor' %}
+<button onclick="window.location.href='{% url 'home:newPrescription' %}'">
+    Add Prescription
+</button><br/>
+{%endif%}
+</body>
+</html>

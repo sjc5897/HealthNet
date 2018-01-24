@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<style> 
+div {
+background-color:white; color:black;
+}
+ul{
+list-style-type: none;
+padding: 5px;
+position:relative;
+right:6px
+}
+li{
+padding: 5px;
+background-color:#e6e6e6
+}
+li:nth-child(odd){
+background: lightgray;
+}
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Administrators</title>
+    {% include "home/include/header.html" %}
+
+</head>
+<body>
+<h2>Administrator List:</h2>
+{% if administrator_list %}
+    <ul>
+        {% for administrator in administrator_list %}
+        <li>
+            {{administrator.username}}
+        </li>
+        {% endfor %}
+    </ul>
+{%else%}
+    <p> No Administrators available</p>
+{% endif %}
+</body>
+</html>

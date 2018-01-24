@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HealthNet</title>
+    {% include "home/include/header.html" %}
+</head>
+<body>
+    <h2>Time: {{app.date}}</h2>
+    Office: {{app.office}} <br/>
+    Doctor: Dr. {{doc.first_name}} {{doc.last_name}} ({{doc.user.username}})<br/>
+    Patient: {{patient.first_name}} {{patient.last_name}}   ({{patient.user.username}})<br/>
+    {{app.description|linebreaks}}<br/>
+     <button onclick="window.location.href='{% url 'home:EditAppointment' app.id%}'">
+        Edit Appointment
+    </button>
+    {% if user.user_type != 'nurse' %}
+    <button onclick="window.location.href='{% url 'home:CancelAppointment' app.id%}'">
+        Cancel Appointment
+    </button>
+    {%endif%}
+    </body>
+</html>

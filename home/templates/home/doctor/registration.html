@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Doctor Registration </title>
+    {% include "home/include/header.html" %}
+</head>
+<body>
+<h2>Doctor Registration:</h2>
+<form method="post">
+    <table>
+    {% csrf_token %}
+    {{user_form.as_table}}
+    {{doctor_form.as_table}}
+    </table>
+    <button type="submit">Create Doctor Account </button>
+
+</form>
+    <button onclick="window.location.href='/home'">
+    Cancel
+</button>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HealthNet</title>
+    {% include "home/include/header.html" %}
+</head>
+<body>
+<h2>Doctor Name: Dr. {{doctor.first_name}} {{doctor.last_name}} ({{doctor.specialty}})</h2>
+    Hospital: {{doctor.hospital}}<br/>
+    Office: {{doctor.office}} ({{doctor.office_hours_start}} - {{doctor.office_hours_end}})<br/>
+{% if doctor.user.email %}
+    Email: {{doctor.user.email}}<br/>
+{%endif%}
+Office Phone: {{phone}}<br/>
+<a href="{% url 'home:appointmentCal' doctor.user.username %}" style="text-decoration: none;">View Calendar</a><br/>
+{% if user.is_superuser %}
+    <a href="{% url 'home:editDoctor' doctor.user.username %}" style="text-decoration: none;">Edit Profile</a><br/>
+{% endif %}
+</body>
+</html>

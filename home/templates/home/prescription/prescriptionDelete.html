@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Confirmation</title>
+    {% include "home/include/header.html" %}
+</head>
+<body>
+Are you sure you want to DELETE this prescription
+<button onclick="window.location.href='{% url 'home:deletePrescription' prescription.id%}'">YES</button>
+<button onclick="window.location.href='{% url 'home:prescriptionDetail' prescription.id%}'">NO </button>
+</body>
+</html>

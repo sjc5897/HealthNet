@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HealthNet</title>
+    {% include "home/include/header.html" %}
+</head>
+<body>
+<h2>{{owner.first_name}} {{owner.last_name}}'s Calendar:</h2>
+{% if appointments %}
+
+<ul>
+    {% for appointment in appointments %}
+    <li>
+    {% if user.username == appointment.patient_ID or user.username == appointment.doctor_ID or user.user_type == 'nurse' %}
+        <a href="{% url 'home:AppointmentDetails' appointment.id %}"style="text-decoration: none;">
+               {{appointment.date}} </a>
+    {%else%}
+               {{appointment.date}}
+    {% endif%}
+    </li>
+    {% endfor %}
+    </ul>
+
+{%else%}
+    <p> No Appointments </p>
+{% endif %}
+{% if not user.is_superuser %}
+<a href="{% url 'home:CreateAppointment' owner.user.username %}"style="text-decoration: none;">
+    Schedule an appointment</a><br/>
+{% endif %}
+</body>
+</html>

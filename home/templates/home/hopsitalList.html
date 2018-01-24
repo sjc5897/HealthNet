@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HealthNet Hospitals</title>
+</head>
+<body> {% include "home/include/header.html" %}
+<h2>HealthNet Hospitals: </h2>
+
+ {% if Hospital_list %}
+    {% for hospital in Hospital_list %}
+    <li>{{hospital.name}}<br>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{hospital.address}} {{hospital.city}}, {{hospital.state}}
+        <a href="{%url 'home:editHospital' hospital.id%}">
+            Edit
+        </a>
+    </li>
+    {%endfor%}
+{%else%}
+    No Hospitals Created Yet
+{%endif%}
+</body>
+</html>

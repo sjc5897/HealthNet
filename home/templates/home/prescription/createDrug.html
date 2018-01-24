@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Drug</title>
+     {% include "home/include/header.html" %}
+</head>
+<body>
+<h2> Create New Drug: </h2>
+ <form method="post">
+     <table>
+        {% csrf_token %}
+        {{form.as_table}}
+
+    </table><button type="submit">Create New Drug</button>
+    </form>
+
+</body>
+</html>

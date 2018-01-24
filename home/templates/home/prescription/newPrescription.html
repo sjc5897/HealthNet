@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Prescription</title>
+    {% include "home/include/header.html" %}
+</head>
+<body>
+<form method="POST">
+    {% csrf_token %}
+    {{prescription_form.as_p}}
+    <button type="submit">Create Prescription</button><br/>
+</form>
+</body>
+</html>

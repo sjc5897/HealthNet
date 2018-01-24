@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HealthNet</title>
+    {% include "home/include/header.html" %}
+</head>
+<body>
+    {% if week == False %}
+        <h2>{{hospital}}'s Appointments for Today:</h2>
+            {%if appointments %}
+            <ul>
+            {% for appointment in appointments %}
+                <li><a href="{% url 'home:AppointmentDetails' appointment.id %}" style="text-decoration: none;">
+                       {{appointment.doctor_ID}} {{appointment.date}}</a>
+                </li>
+                {% endfor %}
+            </ul>
+            {%else%}
+                <p> No Appointments </p>
+            {% endif %}
+            <button onclick="window.location.href='{% url 'home:nCal7' owner.user.username%}'" style="text-decoration: none;">
+                View next 7 days
+            </button>
+    {% else %}
+         <h2>{{hospital}}'s Appointments for the next 7 days:</h2>
+            {%if appointments %}
+            <ul>
+            {% for appointment in appointments %}
+                <li><a href="{% url 'home:AppointmentDetails' appointment.id %}" style="text-decoration:none;">
+                       {{appointment.doctor_ID}} {{appointment.date}}</a>
+                </li>
+                {% endfor %}
+            </ul>
+            {%else%}
+                <p> No Appointments </p>
+            {% endif %}
+            <button onclick="window.location.href='{% url 'home:appointmentCal' owner.user.username %}'">
+                View appointments for today
+            </button>
+    {%endif%}
+
+</body>
+</html>

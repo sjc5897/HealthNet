@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Hospital</title>
+</head>
+<body>{% include "home/include/header.html" %}
+
+<h2> Edit {{h.name}}:</h2>
+<form method="post">
+    <table>
+    {% csrf_token %}
+    {{hospital_form.as_table}}
+    </table>
+    <button type="submit">Submit Changes</button>
+
+
+
+</body>
+</html>

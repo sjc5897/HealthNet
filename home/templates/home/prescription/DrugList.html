@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     <title>HealthNet Drug Database</title>
+</head>
+<body> {% include "home/include/header.html" %}
+<h2>HealthNet Drug Database: </h2>
+
+ {% if drug_list %}
+    {% for drug in drug_list %}
+    <li>{{drug.name}} ({{drug.price}})<br>
+        {% if user.is_superuser %}
+        <a href="{%url 'home:editDrug' drug.id%}">
+            Edit
+        </a>
+        {%endif%}
+    </li>
+    {%endfor%}
+{%else%}
+    No Drugs in Database
+{%endif%}
+</html>

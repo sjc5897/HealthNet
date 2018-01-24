@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HealthNet</title>
+    {% include "home/include/header.html" %}
+</head>
+<body>
+<form method="post">
+    <table>
+    {% csrf_token %}
+    {{appointment_form.as_table}}</table>
+    <button type = "submit">Save changes</button>
+</form>
+    <button onclick = "window.location.href='/home'">
+    Cancel
+</button>
+</body>
+</html>

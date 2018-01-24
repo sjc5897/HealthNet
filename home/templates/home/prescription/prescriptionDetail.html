@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prescription</title>
+    {% include "home/include/header.html" %}
+</head>
+<body>
+Patient: {{prescription.user_ID}}<br/>
+Drug: {{prescription.drug.name}}<br/>
+Quantity: {{prescription.quantity}}<br/>
+Directions:<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{prescription.directions|linebreaks}}<br/>
+<br/>
+Expiration Date: {{prescription.expiration}}<br/>
+Refills Remaining: {{prescription.refills}}<br/>
+Price of Refill: ${{price}}<br/>
+<br/>
+{% if user.username == patient %}
+    {% if not isExpired %}
+        {% if prescription.refills != 0 %}
+            {% if showRefill %}
+                <button onclick="window.location.href='{% url 'home:refill' prescription.id%}'">
+                    Refill
+                </button><br/>
+            {% else %}
+                You must wait until {{timeRefill}} to refill you prescription.<br/>
+            {%endif%}
+        {% else %}
+            You have no more refill remaining<br/>
+        {%endif%}
+    {% else %}
+        Your prescription has expired
+    {%endif%}
+{%endif%}
+{% if user.user_type == 'doctor' %}
+    <button onclick="window.location.href='{% url 'home:deletePrescriptionConfirmation' prescription.id%}'">
+        Delete
+    </button>
+{%endif%}
+</body>
+</html>

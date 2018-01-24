@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "home/include/header.html" %}
+<style>
+h1{
+color: gold;
+}
+a:hover{background-color:#66ccff}
+</style>
+</head>
+<body>
+<h2> Outbox: </h2>
+<button onclick = "window.location.href = '{% url 'home:newmessage' %}'" style = "width:150px">
+Create New Message
+</button>
+<button onclick = "window.location.href = '{% url 'home:messages' %}'" style = "width:70px">
+Inbox
+</button>
+{% if message_list %}
+        <ul>
+            {% for Message in message_list %}
+            <li><a href= "{% url 'home:messageDetail2' Message.id %}" style="text-decoration: none;">
+                To: {{Message.Receiver_ID}}<br>
+                Sent: {{Message.timestamp|date:"m/d/Y P"}}<br>
+                Subject: {{Message.Subject}}<br>
+            </a>
+            </li>
+            {% endfor %}
+        </ul>
+    {%else%}
+        <p> No Messages available</p>
+    {% endif %}
+<button onclick = "window.location.href = '{% url 'home:newmessage' %}'" style = "width:150px">
+Create New Message
+</button>
+<button onclick = "window.location.href = '{% url 'home:messages' %}'" style = "width:70px">
+Inbox
+</button>
+</body>
+</html>

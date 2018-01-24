@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    {% include "home/include/header.html" %}
+</head>
+<body>
+<h2>Login</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit"> Login </button>
+</form>
+<button onclick="window.location.href='/home'">
+    return
+</button>
+</body>
+</html>
